@@ -1,0 +1,29 @@
+{
+  "extends": ["stylelint-config-recommended", "stylelint-config-rational-order"],
+  "plugins": ["stylelint-order", "stylelint-config-rational-order/plugin", "stylelint-prettier"],
+  "rules": {
+    "prettier/prettier": true,
+    "string-quotes": "single",
+    "declaration-block-single-line-max-declarations": 1,
+    "number-leading-zero": "never",
+    "plugin/rational-order": [
+      true,
+      {
+        "border-in-box-model": false,
+        "empty-line-between-groups": true
+      }
+    ],
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["function", "if", "each", "include", "mixin", "extend", "else", "warn"]
+      }
+    ],
+    "indentation": [
+      2,
+      {
+        "baseIndentLevel": 2
+      }
+    ]
+  }
+}

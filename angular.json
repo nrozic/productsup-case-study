@@ -31,8 +31,16 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "./src",
+                "src/assets/scss/",
+                "src/assets/scss/components"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -99,13 +107,33 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "./src",
+                "src/assets/scss/",
+                "src/assets/scss/components"
+              ]
+            },
             "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         }
       }
     }
   },
-  "defaultProject": "case-study-productsup"
+  "defaultProject": "case-study-productsup",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }

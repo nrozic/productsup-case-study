@@ -1,0 +1,12 @@
+@import 'variables';
+
+aside {
+  display: flex;
+
+  border: 1px solid green;
+  width: 100%;
+
+  @media #{$gt-xs} {
+    width: $sidebar-width;
+  }
+}

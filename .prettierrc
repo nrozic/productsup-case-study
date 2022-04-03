@@ -1,0 +1,17 @@
+{
+  "bracketSpacing": true,
+  "semi": false,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "printWidth": 140,
+  "overrides": [
+    {
+      "files": "src/**/*.scss",
+      "options": {
+        "plugins": ["./node_modules/prettier-plugin-rational-order"],
+        "singleQuote": true,
+        "tabWidth": 2
+      }
+    }
+  ]
+}

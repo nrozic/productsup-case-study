@@ -60,7 +60,25 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
     </table>
+
+    <div *ngIf="!filteredData?.length" class="no-content">
+      <h3 class="no-content__title">NO DATA</h3>
+      <div *ngIf="filtersList?.length; else noData" class="no-content__info">
+        <p>Congratulations, you just broke the internet... Just kidding 🤣</p>
+        <p>We just couldn't find the products that match your current set of filters.</p>
+        <p>Your filters selection seems to be a bit too specific, please try again with a different filters.</p>
+      </div>
+      <ng-template #noData>
+        <p class="no-content__info">
+          Unfortunately, there are no products at this moment. PLease try again later.
+        </p>
+      </ng-template>
+      <img width="600px"
+           src="https://cdn.dribbble.com/users/8106/screenshots/15480894/media/1af3c28dc6bd8d62d351308e5a03133c.png"
+           alt="Broken view illustration, yellow Y shaped character holding broken line in hands">
+    </div>
   </div>
 </div>
 

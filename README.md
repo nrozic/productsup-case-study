@@ -3,8 +3,15 @@
 This is my solution to the case study challenge as part of the technical interview for the front-end developer position
 at ProductsUp.
 
+## Docker
+
 Since most people don't have a dev environment on their machines, I prepared a Docker image, so you can run the project
 without the hassle of setting up a dev environment, installing node.js and other dependencies.
+
+To run the project using docker, navigate to project root and run ````docker compose up --build````
+or ```docker-compose up --build```, depending on version of docker compose you are using
+
+Once the Docker does its magic, navigate to [localhost:8080](localhost:8080)
 
 ## Angular dev environment
 

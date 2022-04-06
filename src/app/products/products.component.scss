@@ -102,3 +102,23 @@
     }
   }
 }
+
+.no-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  justify-content: space-around;
+
+  &__title {
+    font-weight: bold;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: #8b8b8b;
+  }
+}

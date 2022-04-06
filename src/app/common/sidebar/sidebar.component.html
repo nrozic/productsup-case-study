@@ -1,3 +1,78 @@
-<aside>
-  sidebar works
+<aside class="toolbox">
+  <div *ngIf="filterForm" class="toolbox__add">
+    <h3>Filtering options</h3>
+
+    <form [formGroup]="filterForm!" class="toolbox__form" (ngSubmit)="addFilter($event)">
+      <p>
+        <mat-form-field>
+          <mat-label>Column</mat-label>
+          <mat-select formControlName="column" (selectionChange)="updateValueValidators($event)">
+            <mat-option *ngFor="let column of columns" [value]="column">{{capitalize(column)}}</mat-option>
+          </mat-select>
+          <mat-hint align="end">Column to apply the filter to</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <mat-label>Operator</mat-label>
+          <mat-select formControlName="operator" (selectionChange)="updateValueValidators($event)">
+            <mat-option *ngFor="let operator of operators"
+                        [value]="operator">{{ operatorLabels[operator] }}</mat-option>
+          </mat-select>
+          <mat-hint align="end">Operator for comparison</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <mat-label>Value</mat-label>
+          <input formControlName="value" matInput placeholder="Placeholder">
+          <mat-hint align="end">Value for the comparison</mat-hint>
+        </mat-form-field>
+      </p>
+
+      <button mat-stroked-button>Add Filter</button>
+
+      <p>
+        <br>
+        <mat-hint>
+          Populate options in the form above in order to add filter to the filters list. Once you are satisfied with
+          the selected filters, you will be able to apply those filters
+        </mat-hint>
+      </p>
+    </form>
+
+  </div>
+
+  <div *ngIf="filtersList?.length" class="toolbox__filters">
+    <mat-label>Filters to apply:</mat-label>
+
+    <mat-chip-list aria-label="Filters to apply">
+      <mat-chip *ngFor="let filter of filtersList" (removed)="remove(filter)">
+        {{ capitalize(filter.column) }} {{ operatorLabels[filter.operator] }} {{filter.value}}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+
+  <div class="toolbox__actions">
+    <button mat-stroked-button (click)="resetFilters()">Reset</button>
+    <button mat-flat-button color="primary" (click)="applyFilters()">
+      Apply Filters
+    </button>
+  </div>
+
+  <div *ngIf="appliedFilters?.length" class="toolbox__filters">
+    <mat-label>Applied filters:</mat-label>
+
+    <mat-chip-list aria-label="Applied filterd">
+      <mat-chip *ngFor="let filter of appliedFilters" color="primary">
+        {{ capitalize(filter.column) }} {{ operatorLabels[filter.operator] }} {{filter.value}}
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+
 </aside>

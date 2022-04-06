@@ -3,12 +3,12 @@
 This is my solution to the case study challenge as part of the technical interview for the front-end developer position
 at ProductsUp.
 
-Since most people don't have a dev environment on their machines, I prepared a docker image, so you can run the project
+Since most people don't have a dev environment on their machines, I prepared a Docker image, so you can run the project
 without the hassle of setting up a dev environment, installing node.js and other dependencies.
 
 ## Angular dev environment
 
-In case you already have node and Angular CLI installed on your machine, you can use ng command to run the project
+In case you already have Node and Angular CLI installed on your machine, you can use ng command to run the project
 locally.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.

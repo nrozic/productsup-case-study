@@ -1,8 +1,66 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate" color="accent"></mat-progress-bar>
+
+<div class="products__pagination">
+  <mat-paginator
+    *ngIf="data?.data?.length" [pageIndex]="pageIndex" [pageSize]="itemsPerPage"
+    [length]="totalProducts" (page)=" onPaginateChange($event)"></mat-paginator>
+</div>
+
 <div class="products">
   <div class="products__sidebar">
-    <app-sidebar></app-sidebar>
+    <app-sidebar
+      [columns]="displayedColumns"
+      [appliedFilters]="filtersList"
+      (filtersApplied$)="applyFilters($event)"></app-sidebar>
   </div>
-  <div class="products__content">
-    <p>products works!</p>
+  <div *ngIf="dataSource" class="products__content">
+
+    <table mat-table [dataSource]="dataSource">
+
+      <ng-container *ngFor="let col of displayedColumns">
+        <ng-container [matColumnDef]="col">
+          <th mat-header-cell *matHeaderCellDef> {{ formatObjectKey(col) }} </th>
+          <ng-container [ngSwitch]="col">
+            <ng-container *ngSwitchCase="'image'">
+              <td mat-cell *matCellDef="let element"><img [src]="element[col]" alt="Product image"></td>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="'image_additional'">
+              <td mat-cell *matCellDef="let element"><img [src]="element[col]" alt="Additional product image"></td>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="'url'">
+              <td mat-cell *matCellDef="let element">
+                <a [href]="element[col]">Link to product</a>
+              </td>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="'source_video'">
+              <td mat-cell *matCellDef="let element">
+                <!--                <a [href]="element[col]">Link to product</a>-->
+                <video controls [src]="element[col]"></video>
+              </td>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="'price'">
+              <td mat-cell *matCellDef="let element">
+                <span
+                  class="products__product--truncated"> {{element[col] }}</span>
+              </td>
+            </ng-container>
+
+            <ng-container *ngSwitchDefault>
+              <td mat-cell *matCellDef="let element">
+                <span class="products__product--truncated"> {{element[col] }}</span>
+              </td>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
   </div>
 </div>
+

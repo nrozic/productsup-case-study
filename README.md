@@ -3,6 +3,18 @@
 This is my solution to the case study challenge as part of the technical interview for the front-end developer position
 at ProductsUp.
 
+## Note
+
+I decided to use Angular Material, mostly because of their UI components like table, buttons, forms, paginator...
+Angular Material provides nice set of stable and tested UI components, and since it's developed by Google, it will
+always follow Angular development cycle
+
+Also, I'm using some dependencies for code formatting but those are only dev-dependencies, they are not included in the
+final build
+
+I've implemented less than, greater than, equals, and contains operators to demonstrate the pattern that can easily be
+extended with any number of additional filters
+
 ## Docker
 
 Since most people don't have a dev environment on their machines, I prepared a Docker image, so you can run the project

@@ -59,8 +59,8 @@
   </div>
 
   <div class="toolbox__actions">
-    <button mat-stroked-button (click)="resetFilters()">Reset</button>
-    <button mat-flat-button color="primary" (click)="applyFilters()">
+    <button *ngIf="appliedFilters?.length" mat-stroked-button (click)="resetFilters()">Reset</button>
+    <button *ngIf="filtersList?.length" mat-flat-button color="primary" (click)="applyFilters()">
       Apply Filters
     </button>
   </div>
